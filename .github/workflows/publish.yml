@@ -12,6 +12,7 @@ jobs:
 
             - name: Open root directory
               run: |
+                  pwd
                   ls -la
 
             - name: Open Web Client Directory
