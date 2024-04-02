@@ -28,5 +28,3 @@ const { fiscal, labor, tax, health, education } = getPolicyStore();
     </div>
     <SettingsBar />
 </template>
-
-<style scoped></style>

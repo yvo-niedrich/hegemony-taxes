@@ -46,9 +46,6 @@ function count() {
 </template>
 
 <style scoped>
-/*=============
-Adding tick marks
-=========================*/
 .wrapper {
     color: #4b4949;
     display: flex;

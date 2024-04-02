@@ -33,15 +33,6 @@ const { population } = getClassStore();
     </div>
 </template>
 
-<style scoped>
-h3 {
-    margin: 0 0 0.6em 0;
-    font-size: 0.8rem;
-    font-weight: bold;
-    text-align: center;
-}
-</style>
-
 <style>
 .working-class {
     background-color: #df0231;

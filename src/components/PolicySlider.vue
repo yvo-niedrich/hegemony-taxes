@@ -59,60 +59,50 @@ const model = defineModel({
     </div>
 </template>
 
-<style scoped>
-h3 {
-    margin: 0 0 0.6em 0;
-    font-size: 0.8rem;
-    font-weight: bold;
-    text-shadow: #35474d 0 0 3px;
-    text-align: center;
-}
-</style>
-
 <style lang="scss">
 .policy {
     color: #ffffff;
     text-shadow: #35474d 0 0 1px;
-
     transition: 0.2s ease-in-out;
-    @media (min-width: 719px) and (max-width: 980px) {
-        grid-template-columns: 2em 1fr;
+
+    &.policy-fiscal {
+        background-color: #048dc2;
     }
-}
-
-.policy-number {
-    transition:
-        margin 0.2s ease-in-out,
-        line-height 0.2s ease-in-out;
-
-    padding: 0;
-    margin-right: 0.2em;
-    font-weight: bold;
-    font-size: 4em;
-    font-stretch: semi-condensed;
-    border-right: 1px solid #ffffff;
-
-    @media (min-width: 719px) and (max-width: 980px) {
-        margin-right: 0.1em;
-        font-size: 3em;
-        line-height: 1.6em;
+    &.policy-labor {
+        background-color: #7a6fab;
     }
-}
+    &.policy-tax {
+        background-color: #be53a1;
+    }
+    &.policy-health {
+        background-color: #cb1312;
+    }
+    &.policy-education {
+        background-color: #f39404;
+    }
+    @media (min-width: 719px) and (max-width: 980px) {
+        grid-template-columns: 2.2em 1fr;
+        padding-left: 0.6em;
+    }
+    .policy-number {
+        transition:
+            margin 0.2s ease-in-out,
+            line-height 0.2s ease-in-out;
 
-.policy.policy-fiscal {
-    background-color: #048dc2;
-}
-.policy.policy-labor {
-    background-color: #7a6fab;
-}
-.policy.policy-tax {
-    background-color: #be53a1;
-}
-.policy.policy-health {
-    background-color: #cb1312;
-}
-.policy.policy-education {
-    background-color: #f39404;
+        padding: 0;
+        margin-right: 0.2em;
+        font-weight: bold;
+        font-size: 4em;
+        font-stretch: semi-condensed;
+        border-right: 1px solid #ffffff;
+
+        @media (min-width: 719px) and (max-width: 980px) {
+            margin-right: 0.15em;
+            font-size: 2.8em;
+            line-height: 1.6em;
+            font-stretch: extra-condensed;
+        }
+    }
 }
 </style>
 
