@@ -92,14 +92,6 @@ body {
     background-image: url('@/assets/icon-business-s.svg');
 }
 
-.icon-flag-en {
-    background-image: url('/images/icons/flag-en.svg');
-}
-
-.icon-flag-de {
-    background-image: url('/images/icons/flag-de.svg');
-}
-
 .formula-separator {
     color: #aaa;
 }

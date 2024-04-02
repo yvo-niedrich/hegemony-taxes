@@ -16,7 +16,7 @@ jobs:
                   ls -la
 
             - name: Open Web Client Directory
-              working-directory: src/
+              working-directory: src/components
               run: |
                   ls -la
 
