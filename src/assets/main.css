@@ -69,14 +69,15 @@ body {
     width: 100%;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 2.5em;
 }
 
 .icon-workers {
+    background-size: contain;
     background-image: url('@/assets/icon-workers.svg');
 }
 
 .icon-income {
+    background-size: 2.6em;
     background-image: url('@/assets/icon-income.svg');
 }
 

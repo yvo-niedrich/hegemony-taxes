@@ -234,7 +234,7 @@ export default defineComponent({
             tabindex="-1"
             :disabled="disabled || readonly || !increasable"
             @mousedown.prevent="touchStarted(increase)"
-            @touchstart.prevent="touchStarted(decrease)"
+            @touchstart.prevent="touchStarted(increase)"
             @mouseup.prevent="touchEnded"
             @touchend.prevent="touchEnded"
             @mouseout="touchEnded"
