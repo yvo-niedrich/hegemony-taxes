@@ -28,7 +28,7 @@ function getCorporateTax(income: number, policy: number): number {
 
 <template>
     <div class="capitalist-class card">
-        <h3>{{ $t('header.capitalistclass') }}</h3>
+        <h3>{{ $t('header.capitalist') }}</h3>
 
         <div class="capitalist-parameters">
             <div class="split">

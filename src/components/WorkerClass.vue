@@ -6,10 +6,6 @@ import { getClassStore } from '@/stores/classes';
 
 const { incomeTax } = getPolicyStore();
 const { population } = getClassStore();
-
-function setPopulation(num: number) {
-    population.value = Math.max(Math.min(num, 10), 3);
-}
 </script>
 
 <template>

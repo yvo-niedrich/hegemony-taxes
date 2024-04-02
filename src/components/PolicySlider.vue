@@ -54,7 +54,6 @@ const model = defineModel({
 
         <div class="policy-column">
             <h3>{{ $t(policyName) }}</h3>
-
             <NumberSlider v-model.number="model" min="0" max="2" :format="(x: number) => ['A', 'B', 'C'][x]" />
         </div>
     </div>
