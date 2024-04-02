@@ -32,7 +32,7 @@ function resetStores() {
         </div>
         <div class="settings-license no-break">
             &copy; Yvo Niedrich
-            <span class="text-separator">|</span>
+            <span class="text-separator"> | </span>
             <a href="https://opensource.org/license/mit" target="_blank">MIT License</a>
         </div>
     </div>
@@ -51,15 +51,16 @@ function resetStores() {
     grid-template-columns: 1fr 1fr 1fr;
 
     > div {
-        padding-top: 0.2em;
+        padding-top: 0.5em;
+        padding-bottom: 0.3em;
         text-align: center;
     }
 
     img,
     .settings-icon {
         cursor: pointer;
-        height: 1.2em;
-        margin: 0 0.2em;
+        height: 1.4em;
+        margin: 0 0.4em;
 
         border-radius: 0.325rem;
     }
@@ -71,14 +72,14 @@ function resetStores() {
 
     .settings-icon {
         display: inline-block;
-        width: 2em;
-        height: 1.2em;
+        width: 2.6em;
+        height: 1.4em;
 
         background-size: 100% 85%;
         background-repeat: no-repeat;
         background-position: center;
 
-        background-color: #888;
+        background-color: #999;
         box-shadow: 0 0 1px #000;
 
         &.setting-formula {
@@ -92,8 +93,17 @@ function resetStores() {
 
     .settings-license {
         color: #666;
-        line-height: 2em;
-        font-size: 0.6em;
+        line-height: 2.4em;
+        font-size: 0.7em;
+
+        a {
+            color: #888;
+            text-decoration: underline;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
     }
 
     .language-icon {
