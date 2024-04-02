@@ -6,6 +6,8 @@ import { useClassStore } from '@/stores/classes';
 import { usePolicyStore } from '@/stores/policies';
 const { store, language, showFormula } = getSettingsStore();
 
+const baseUrl = import.meta.env.BASE_URL;
+
 function resetStores() {
     store.$reset();
     usePolicyStore().$reset();
@@ -18,7 +20,7 @@ function resetStores() {
         <div class="settings-language no-break">
             <img
                 v-for="locale in $i18n.availableLocales"
-                :src="`/img/icons/flag-${locale}.svg`"
+                :src="`${baseUrl}/img/icons/flag-${locale}.svg`"
                 :key="`locale-${locale}`"
                 :class="{ 'language-icon': true, active: $i18n.locale == locale }"
                 @click="() => ($i18n.locale = language = locale)"
