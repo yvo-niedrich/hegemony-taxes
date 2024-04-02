@@ -6,11 +6,17 @@ body {
 }
 
 h3 {
-    margin: 0 0 0.6em 0;
-    font-size: 0.9rem;
+    margin: 0 0 0.75em 0;
+    font-size: 1rem;
     font-weight: bold;
-    text-shadow: #35474d 0 0 3px;
+    text-shadow: #273438 0 0 3px;
     text-align: center;
+}
+
+@media (min-width: 719px) and (max-width: 980px) {
+    h3 {
+        font-size: 0.8rem;
+    }
 }
 
 #app {
@@ -47,6 +53,13 @@ h3 {
 
 ​ .column {
     padding: 0.4em 0.4em 0.4em 0.2em;
+}
+
+@media screen and (max-width: 719px) {
+    .column.class-wrapper {
+        margin-top: 1.5em;
+        margin-bottom: 1.5em;
+    }
 }
 
 .no-select {

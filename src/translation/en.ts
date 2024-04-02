@@ -14,7 +14,7 @@ export default {
         fiscal: 'Fiscal Policy',
         labor: 'Labor Market',
         tax: 'Taxation',
-        health: 'Healthcare',
+        health: 'Healthcare & Benefits',
         education: 'Education',
         unknown: 'Unknown Policy',
     },

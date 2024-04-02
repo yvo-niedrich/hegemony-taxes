@@ -17,15 +17,19 @@ function toggleFormula() {
 
 <style lang="scss">
 .tax-formula {
-    transition: 0.2s ease-in-out;
-
     background-color: #fff;
     border: 1px solid #777;
     border-radius: 0.5rem;
     margin: 0.8em 1.5em 0 1.5em;
+    overflow: visible;
+
+    &:not(.detailed) {
+        transition: 0.2s ease-in-out;
+    }
 
     @media screen and (max-width: 980px) {
         &.detailed {
+            margin-top: 0.9em;
             margin-left: 0.4em;
             margin-right: 0.4em;
 
@@ -36,8 +40,10 @@ function toggleFormula() {
 
     @media screen and (max-width: 529px) {
         &.detailed {
+            margin-top: 1em;
             margin-left: 0.2em;
             margin-right: 0.2em;
+
             font-size: 1.15rem;
             line-height: 1.8em;
         }

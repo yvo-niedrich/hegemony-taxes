@@ -11,16 +11,14 @@ const { fiscal, labor, tax, health, education } = getPolicyStore();
 
 <template>
     <div class="container">
-        <div class="column">
-            <div class="policy-wrapper">
-                <PolicySlider v-model="fiscal" policy="fiscal" />
-                <PolicySlider v-model="labor" policy="labor" />
-                <PolicySlider v-model="tax" policy="tax" />
-                <PolicySlider v-model="health" policy="health" />
-                <PolicySlider v-model="education" policy="education" />
-            </div>
+        <div class="column policy-wrapper">
+            <PolicySlider v-model="fiscal" policy="fiscal" />
+            <PolicySlider v-model="labor" policy="labor" />
+            <PolicySlider v-model="tax" policy="tax" />
+            <PolicySlider v-model="health" policy="health" />
+            <PolicySlider v-model="education" policy="education" />
         </div>
-        <div class="column">
+        <div class="column class-wrapper">
             <WorkerClass />
             <MiddleClass />
             <capitalist />
