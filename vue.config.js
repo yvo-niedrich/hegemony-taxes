@@ -1,4 +1,4 @@
 /* eslint-disable */
-export default defineConfig({
-    publicPath: '/hegemony-taxes/',
-});
+module.exports = {
+    publicPath: process.env.NODE_ENV === 'production' ? '/hegemony-taxes/' : '/',
+};
