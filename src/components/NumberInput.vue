@@ -206,7 +206,9 @@ export default defineComponent({
             tabindex="-1"
             :disabled="disabled || readonly || !decreasable"
             @mousedown.prevent="touchStarted(decrease)"
+            @touchstart.prevent="touchStarted(decrease)"
             @mouseup.prevent="touchEnded"
+            @touchend.prevent="touchEnded"
             @mouseout="touchEnded"
         />
         <input
@@ -232,7 +234,9 @@ export default defineComponent({
             tabindex="-1"
             :disabled="disabled || readonly || !increasable"
             @mousedown.prevent="touchStarted(increase)"
+            @touchstart.prevent="touchStarted(decrease)"
             @mouseup.prevent="touchEnded"
+            @touchend.prevent="touchEnded"
             @mouseout="touchEnded"
         />
     </div>
@@ -288,7 +292,7 @@ export default defineComponent({
         bottom: 1px;
         position: absolute;
         top: 1px;
-        width: 3rem;
+        width: 3.2rem;
         z-index: 1;
 
         cursor: pointer;

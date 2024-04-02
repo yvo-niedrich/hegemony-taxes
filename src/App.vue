@@ -3,7 +3,7 @@ import PolicySlider from '@/components/PolicySlider.vue';
 import WorkerClass from '@/components/WorkerClass.vue';
 import MiddleClass from '@/components/MiddleClass.vue';
 import capitalist from '@/components/CapitalistClass.vue';
-import Settings from '@/components/Settings.vue';
+import SettingsBar from '@/components/SettingsBar.vue';
 import { getPolicyStore } from '@/stores/policies';
 
 const { fiscal, labor, tax, health, education } = getPolicyStore();
@@ -26,7 +26,7 @@ const { fiscal, labor, tax, health, education } = getPolicyStore();
             <capitalist />
         </div>
     </div>
-    <Settings />
+    <SettingsBar />
 </template>
 
 <style scoped></style>
