@@ -28,8 +28,12 @@ h3 {
 }
 </style>
 
-<style>
+<style lang="scss">
 .tax-box {
+    @media screen and (max-width: 719px) {
+        display: none;
+    }
+
     background-color: #29373c;
     border: 1px solid #000000;
     border-radius: 1em;
@@ -54,23 +58,24 @@ h3 {
 }
 
 .tax-multiplier > div {
-    opacity: 0.8;
+    opacity: 0.7;
     display: table-cell;
     text-align: center;
     background-color: #ffffff;
     color: #000000;
     border-radius: 4em;
-    height: 2.5em;
-    width: 2.5em;
+    height: 1.5em;
+    width: 1.5em;
     vertical-align: middle;
     box-shadow: #000000 0 0 4px;
+    font-stretch: semi-condensed;
 }
 
 .tax-multiplier.active > div {
     font-weight: bold;
     background-color: #ffc239;
     color: #ffffff;
-    text-shadow: #000000 0 0 4px;
+    text-shadow: #000000 0 0 5px;
     opacity: 1;
 }
 </style>

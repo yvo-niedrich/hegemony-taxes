@@ -1,27 +1,45 @@
 import { defineStore, storeToRefs } from 'pinia';
-import { computed, ref } from 'vue';
 import { useStorage } from '@vueuse/core';
+import { computed } from 'vue';
 
-export const usePolicyStore = defineStore('policies', {
-    state: () => {
-        return useStorage('policies', {
-            fiscal: 2,
-            labor: 1,
-            tax: 0,
-            health: 1,
-            education: 2,
-        });
-    },
-    getters: {
-        taxMultiplier: (state) =>
-            3 - state.tax + Math.abs(state.health - 2) * Math.abs(state.tax - 2) + Math.abs(state.education - 2) * Math.abs(state.tax - 2),
-        incomeTax: (state) =>
+export const usePolicyStore = defineStore('policies', () => {
+    const fiscal = useStorage('policies.fiscal', 2);
+    const labor = useStorage('policies.labor', 1);
+    const tax = useStorage('policies.tax', 0);
+    const health = useStorage('policies.health', 1);
+    const education = useStorage('policies.education', 2);
+
+    const taxMultiplier = computed(
+        () =>
+            3 - tax.value + Math.abs(health.value - 2) * Math.abs(tax.value - 2) + Math.abs(education.value - 2) * Math.abs(tax.value - 2),
+    );
+    const incomeTax = computed(
+        () =>
             [
                 [7, 6, 5],
                 [4, 4, 4],
                 [1, 2, 3],
-            ][state.labor][state.tax],
-    },
+            ][Number(labor.value)][Number(tax.value)],
+    );
+
+    function $reset() {
+        fiscal.value = 2;
+        labor.value = 1;
+        tax.value = 0;
+        health.value = 1;
+        education.value = 2;
+    }
+
+    return {
+        fiscal,
+        labor,
+        tax,
+        health,
+        education,
+        taxMultiplier,
+        incomeTax,
+        $reset,
+    };
 });
 
 export const getPolicyStore = () => {
