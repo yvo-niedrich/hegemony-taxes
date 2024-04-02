@@ -1,16 +1,27 @@
 name: Publish to pages
 on:
-  push:
-    branches: [ main ]
+    push:
+        branches: [main]
 jobs:
-  build_vue:
-    runs-on: ubuntu-latest
-    name: Build Vue
-    steps:
-    - uses: actions/checkout@v2
-    - id: Build-Vue
-      uses: xRealNeon/VuePagesAction@1.0.1
-      with:
-        username: 'yvo-niedrich'
-        reponame: 'hegemony-taxes'
-        token: ${{ secrets.GITHUB_TOKEN }}
+    build_vue:
+        runs-on: ubuntu-latest
+        name: Build Vue
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Open root directory
+              run: |
+                  ls -la
+
+            - name: Open Web Client Directory
+              working-directory: src/
+              run: |
+                  ls -la
+
+            - id: Build-Vue
+              uses: xRealNeon/VuePagesAction@1.0.1
+              with:
+                  username: 'yvo-niedrich'
+                  reponame: 'hegemony-taxes'
+                  token: ${{ secrets.GITHUB_TOKEN }}
