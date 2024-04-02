@@ -10,16 +10,6 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v4
 
-            - name: Open root directory
-              run: |
-                  pwd
-                  ls -la
-
-            - name: Open Web Client Directory
-              working-directory: src/components
-              run: |
-                  ls -la
-
             - id: Build-Vue
               uses: xRealNeon/VuePagesAction@1.0.1
               with:
