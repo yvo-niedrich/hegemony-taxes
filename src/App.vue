@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import PolicySlider from './components/PolicySlider.vue';
-import WorkerClass from './components/WorkerClass.vue';
-import MiddleClass from './components/MiddleClass.vue';
-import CapitalistClass from './components/CapitalistClass.vue';
-import Settings from './components/Settings.vue';
+import PolicySlider from '@/components/PolicySlider.vue';
+import WorkerClass from '@/components/WorkerClass.vue';
+import MiddleClass from '@/components/MiddleClass.vue';
+import CapitalistClass from '@/components/CapitalistClass.vue';
+import Settings from '@/components/Settings.vue';
 import { getPolicyStore } from '@/stores/policies';
 
 const { fiscal, labor, tax, health, education } = getPolicyStore();
