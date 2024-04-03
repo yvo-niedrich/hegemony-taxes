@@ -38,7 +38,7 @@ function getCorporateTax(income: number, policy: number): number {
                 </div>
             </div>
             <div class="split">
-                <img src="@/assets/icon-business-c.svg" class="icon-business-c" />
+                <div class="parameter-icon icon-business-c" />
                 <div class="capitalist-parameter parameter-businesses">
                     <NumberInput :min="0" :max="12" v-model="cBusinesses" />
                 </div>
@@ -93,11 +93,14 @@ function getCorporateTax(income: number, policy: number): number {
         }
     }
 
-    img.icon-business-c {
-        margin: 5px auto;
-        width: 2.4em;
-        height: 2.5em;
-        filter: drop-shadow(0px 0px 6px rgb(0 0 0 / 0.6));
+    .icon-business-c {
+        background-size: 2.75em;
+        filter: drop-shadow(0px 0px 8px rgb(0 0 0 / 0.75));
+    }
+
+    .icon-income {
+        // background-size: 2.6em;
+        background-size: 90%;
     }
 }
 </style>

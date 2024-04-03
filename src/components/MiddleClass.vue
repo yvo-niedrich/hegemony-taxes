@@ -13,7 +13,7 @@ const { mEmployments, mBusinesses } = getClassStore();
         <h3>{{ $t('header.middleclass') }}</h3>
 
         <div class="split middleclass-operational">
-            <img src="@/assets/icon-business-m.svg" class="icon-business-m" />
+            <div class="parameter-icon icon-business-m" />
             <div class="middleclass-parameter parameter-income">
                 <NumberSlider :min="0" :max="8" v-model.number="mBusinesses" />
             </div>
@@ -67,15 +67,13 @@ const { mEmployments, mBusinesses } = getClassStore();
         filter: drop-shadow(0px 0px 1px rgb(255 255 255 / 0.5));
     }
     .icon-business-s {
-        background-position: 90% 100%;
         background-size: 2em;
+        background-position: 90% 100%;
         filter: drop-shadow(0px 0px 1px rgb(255 255 255 / 0.5));
     }
-    img.icon-business-m {
-        margin: 0.5em auto 0 auto;
-        width: 2.5em;
-        height: 2.6em;
-        filter: drop-shadow(0px 0px 6px rgb(0 0 0 / 0.6));
+    .icon-business-m {
+        background-size: 2.75em;
+        filter: drop-shadow(0px 0px 8px rgb(0 0 0 / 0.75));
     }
 
     .middleclass-parameter.parameter-employment {

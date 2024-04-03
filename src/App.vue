@@ -7,7 +7,6 @@ import SettingsBar from '@/components/SettingsBar.vue';
 import { getPolicyStore } from '@/stores/policies';
 
 const { fiscal, labor, tax, health, education } = getPolicyStore();
-const production = import.meta.env.PROD;
 </script>
 
 <template>
