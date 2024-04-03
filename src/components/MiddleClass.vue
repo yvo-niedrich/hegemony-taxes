@@ -34,7 +34,7 @@ const { mEmployments, mBusinesses } = getClassStore();
             <div class="detailed-content">
                 <div class="label-group no-break">
                     <div class="label-group-content">
-                        {{ incomeTax }}¥ &times; {{ mEmployments }} &equals; {{ mEmployments * incomeTax }}¥
+                        {{ incomeTax }}<vardis /> &times; {{ mEmployments }} &equals; {{ mEmployments * incomeTax }}<vardis />
                     </div>
                     <div class="label-group-label">{{ $t('taxes.income') }}</div>
                 </div>
@@ -43,14 +43,14 @@ const { mEmployments, mBusinesses } = getClassStore();
 
                 <div class="label-group no-break">
                     <div class="label-group-content">
-                        {{ taxMultiplier }}¥ &times; {{ mBusinesses }} &equals; {{ taxMultiplier * mBusinesses }}¥
+                        {{ taxMultiplier }}<vardis /> &times; {{ mBusinesses }} &equals; {{ taxMultiplier * mBusinesses }}<vardis />
                     </div>
                     <div class="label-group-label">{{ $t('taxes.employment') }}</div>
                 </div>
             </div>
             <span class="detailed-content formula-separator">&rArr;&nbsp;</span>
 
-            <span class="formula-result">{{ mEmployments * incomeTax + mBusinesses * taxMultiplier }}¥</span>
+            <span class="formula-result">{{ mEmployments * incomeTax + mBusinesses * taxMultiplier }}<vardis /></span>
         </TaxFormula>
     </div>
 </template>

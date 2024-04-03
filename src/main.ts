@@ -11,6 +11,7 @@ import de from '@/translation/de';
 
 import NumberInput from '@/components/NumberInput.vue';
 import TaxFormula from '@/components/TaxFormula.vue';
+import VardisIcon from '@/components/VardisIcon.vue';
 
 const app = createApp(App);
 
@@ -28,5 +29,8 @@ app.use(
 
 app.component(NumberInput.name ?? 'NumberInput', NumberInput);
 app.component('TaxFormula', TaxFormula);
+
+// eslint-disable-next-line vue/multi-word-component-names
+app.component('vardis', VardisIcon);
 
 app.mount('#app');

@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { defineComponent } from 'vue';
-
 import { getSettingsStore } from '@/stores/settings';
 import { useClassStore } from '@/stores/classes';
 import { usePolicyStore } from '@/stores/policies';
@@ -118,5 +116,6 @@ function resetStores() {
 </style>
 
 <script lang="ts">
+import { defineComponent } from 'vue';
 export default defineComponent({});
 </script>
