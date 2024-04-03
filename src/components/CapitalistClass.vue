@@ -5,7 +5,7 @@ import { getClassStore } from '@/stores/classes';
 const { tax, taxMultiplier } = getPolicyStore();
 const { cBusinesses, cIncome } = getClassStore();
 
-const corporateTax = {
+const corporateTaxTable = {
     4: [0, 0, 0],
     9: [1, 2, 2],
     24: [5, 5, 4],
@@ -17,13 +17,16 @@ const corporateTax = {
 };
 
 function getCorporateTax(income: number, policy: number): number {
-    for (const [key, value] of Object.entries(corporateTax)) {
+    for (const [key, value] of Object.entries(corporateTaxTable)) {
         if (income <= Number(key)) {
             return value[policy] ?? NaN;
         }
     }
     return NaN;
 }
+
+const employmentTax = computed(() => taxMultiplier.value * cBusinesses.value);
+const corporateTax = computed(() => getCorporateTax(cIncome.value - employmentTax.value, tax.value));
 </script>
 
 <template>
@@ -48,7 +51,7 @@ function getCorporateTax(income: number, policy: number): number {
             <div class="detailed-content">
                 <div class="label-group no-break">
                     <div class="label-group-content">
-                        {{ taxMultiplier }}<vardis /> &times; {{ cBusinesses }} &equals; {{ taxMultiplier * cBusinesses }}<vardis />
+                        {{ taxMultiplier }}<vardis /> &times; {{ cBusinesses }} &equals; {{ employmentTax }}<vardis />
                     </div>
                     <div class="label-group-label">{{ $t('taxes.employment') }}</div>
                 </div>
@@ -56,16 +59,12 @@ function getCorporateTax(income: number, policy: number): number {
                 <span class="formula-separator">&plus;</span>
 
                 <div class="label-group no-break">
-                    <div class="label-group-content" style="min-width: 3.4em">
-                        &nbsp;&nbsp;{{ getCorporateTax(cIncome - taxMultiplier * cBusinesses, tax) }}<vardis />&nbsp;&nbsp;
-                    </div>
+                    <div class="label-group-content" style="min-width: 3.4em">&nbsp;&nbsp;{{ corporateTax }}<vardis />&nbsp;&nbsp;</div>
                     <div class="label-group-label">{{ $t('taxes.corporate') }}</div>
                 </div>
             </div>
             <span class="detailed-content formula-separator">&rArr;&nbsp;</span>
-            <span class="formula-result">
-                {{ taxMultiplier * cBusinesses + getCorporateTax(cIncome - taxMultiplier * cBusinesses, tax) }}<vardis />
-            </span>
+            <span class="formula-result"> {{ employmentTax + corporateTax }}<vardis /> </span>
         </TaxFormula>
     </div>
 </template>
@@ -99,7 +98,6 @@ function getCorporateTax(income: number, policy: number): number {
     }
 
     .icon-income {
-        // background-size: 2.6em;
         background-size: 90%;
     }
 }
@@ -107,5 +105,6 @@ function getCorporateTax(income: number, policy: number): number {
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { computed } from 'vue';
 export default defineComponent({});
 </script>

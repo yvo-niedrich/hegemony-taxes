@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { defineComponent } from 'vue';
+import { computed } from 'vue';
 import NumberSlider from '@/components/NumberSlider.vue';
 import { getPolicyStore } from '@/stores/policies';
 import { getClassStore } from '@/stores/classes';
 
 const { incomeTax } = getPolicyStore();
 const { population } = getClassStore();
+
+const wIncomeTax = computed(() => incomeTax.value * population.value);
 </script>
 
 <template>
@@ -22,7 +24,7 @@ const { population } = getClassStore();
             <div class="detailed-content">
                 <div class="label-group no-break">
                     <div class="label-group-content">
-                        {{ incomeTax }}<vardis /> &times; {{ population }} &equals; {{ incomeTax * population }}<vardis />
+                        {{ incomeTax }}<vardis /> &times; {{ population }} &equals; {{ wIncomeTax }}<vardis />
                     </div>
                     <div class="label-group-label">{{ $t('taxes.income') }}</div>
                 </div>
@@ -30,7 +32,7 @@ const { population } = getClassStore();
                 <span class="formula-separator">&rArr;&nbsp;</span>
             </div>
 
-            <span class="formula-result">{{ population * incomeTax }}<vardis /></span>
+            <span class="formula-result">{{ wIncomeTax }}<vardis /></span>
         </TaxFormula>
     </div>
 </template>
@@ -49,5 +51,6 @@ const { population } = getClassStore();
 </style>
 
 <script lang="ts">
+import { defineComponent } from 'vue';
 export default defineComponent({});
 </script>

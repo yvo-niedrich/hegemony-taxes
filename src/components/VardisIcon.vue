@@ -28,8 +28,6 @@ const props = defineProps({
     },
 });
 
-console.log(props);
-
 const sw = ref(Number(props.strokeWidth) * (props.bold ? 3 : 1));
 </script>
 

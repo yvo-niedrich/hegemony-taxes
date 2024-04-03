@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { defineComponent } from 'vue';
+import { computed } from 'vue';
 import NumberSlider from '@/components/NumberSlider.vue';
 import { getPolicyStore } from '@/stores/policies';
 import { getClassStore } from '@/stores/classes';
 
 const { incomeTax, taxMultiplier } = getPolicyStore();
 const { mEmployments, mBusinesses } = getClassStore();
+
+const mIncomeTax = computed(() => incomeTax.value * mEmployments.value);
+const employmentTax = computed(() => taxMultiplier.value * mBusinesses.value);
 </script>
 
 <template>
@@ -34,7 +37,7 @@ const { mEmployments, mBusinesses } = getClassStore();
             <div class="detailed-content">
                 <div class="label-group no-break">
                     <div class="label-group-content">
-                        {{ incomeTax }}<vardis /> &times; {{ mEmployments }} &equals; {{ mEmployments * incomeTax }}<vardis />
+                        {{ incomeTax }}<vardis /> &times; {{ mEmployments }} &equals; {{ mIncomeTax }}<vardis />
                     </div>
                     <div class="label-group-label">{{ $t('taxes.income') }}</div>
                 </div>
@@ -43,14 +46,14 @@ const { mEmployments, mBusinesses } = getClassStore();
 
                 <div class="label-group no-break">
                     <div class="label-group-content">
-                        {{ taxMultiplier }}<vardis /> &times; {{ mBusinesses }} &equals; {{ taxMultiplier * mBusinesses }}<vardis />
+                        {{ taxMultiplier }}<vardis /> &times; {{ mBusinesses }} &equals; {{ employmentTax }}<vardis />
                     </div>
                     <div class="label-group-label">{{ $t('taxes.employment') }}</div>
                 </div>
             </div>
             <span class="detailed-content formula-separator">&rArr;&nbsp;</span>
 
-            <span class="formula-result">{{ mEmployments * incomeTax + mBusinesses * taxMultiplier }}<vardis /></span>
+            <span class="formula-result">{{ mIncomeTax + employmentTax }}<vardis /></span>
         </TaxFormula>
     </div>
 </template>
@@ -106,5 +109,6 @@ const { mEmployments, mBusinesses } = getClassStore();
 </style>
 
 <script lang="ts">
+import { defineComponent } from 'vue';
 export default defineComponent({});
 </script>
