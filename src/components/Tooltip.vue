@@ -18,7 +18,7 @@ const props = defineProps({
 });
 
 const forceVisibility = ref(false);
-let timer = null;
+let timer = null as any;
 
 const tooltipClasses = computed(() => ({
     tooltip__text: true,

@@ -3,7 +3,7 @@ import { defineProps, defineEmits, useSlots, ref } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 
 const slots = useSlots();
-const hasSlot = (name) => {
+const hasSlot = (name: string) => {
     return !!slots[name];
 };
 
