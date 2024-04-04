@@ -64,7 +64,7 @@ const corporateTax = computed(() => getCorporateTax(cIncome.value - employmentTa
                 <span class="formula-separator">&plus;</span>
 
                 <div class="label-group no-break">
-                    <div class="label-group-content" style="min-width: 3.4em">&nbsp;&nbsp;{{ corporateTax }}<vardis />&nbsp;&nbsp;</div>
+                    <div class="label-group-content" style="min-width: 3.5em">&nbsp;&nbsp;{{ corporateTax }}<vardis />&nbsp;&nbsp;</div>
                     <div class="label-group-label">{{ $t('taxes.corporate') }}</div>
                 </div>
             </div>

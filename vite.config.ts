@@ -11,6 +11,12 @@ import { ViteEjsPlugin } from 'vite-plugin-ejs';
 export default defineConfig({
     base: '/hegemony-taxes/',
 
+    define: {
+        __APP_VERSION__: JSON.stringify(require('./package.json').version),
+        __APP_REPO__: JSON.stringify(require('./package.json').repository.url),
+        __APP_URL__: JSON.stringify(require('./package.json').homepage),
+    },
+
     plugins: [
         vue(),
         vueJsx(),

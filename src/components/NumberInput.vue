@@ -251,7 +251,7 @@ export default defineComponent({
     position: relative;
 
     border-radius: 0.4rem;
-    border: 1px solid #000000;
+    border: 1px solid #333;
 
     & > input {
         -moz-appearance: textfield;
@@ -264,7 +264,7 @@ export default defineComponent({
         width: 100%;
 
         background-color: rgba(255, 255, 255, 0.8);
-        border: 1px solid rgba(255, 255, 255, 0.6);
+        border: 1px solid #ccc;
         display: block;
         line-height: 1.3;
         max-width: 100%;
@@ -285,10 +285,9 @@ export default defineComponent({
         }
     }
 
-    & > button {
+    & > .number-input-button {
         background-color: rgba(255, 255, 255, 0.6);
         border: 0;
-        border-radius: 0.25rem;
         bottom: 1px;
         position: absolute;
         top: 1px;
@@ -304,7 +303,7 @@ export default defineComponent({
         &:hover {
             &::before,
             &::after {
-                background-color: #0074d9;
+                background-color: #292929;
             }
         }
 
@@ -313,7 +312,7 @@ export default defineComponent({
 
             &::before,
             &::after {
-                background-color: rgba(133, 133, 133, 0.6);
+                background-color: rgba(119, 119, 119, 0.75);
             }
         }
 
@@ -340,7 +339,7 @@ export default defineComponent({
 
         &.number-input-button-minus {
             border-bottom-right-radius: 0;
-            border-right: 1px solid #ddd;
+            border-right: 1px solid #ccc;
             border-top-right-radius: 0;
             left: 1px;
 
@@ -351,7 +350,7 @@ export default defineComponent({
 
         &.number-input-button-plus {
             border-bottom-left-radius: 0;
-            border-left: 1px solid #ddd;
+            border-left: 1px solid #ccc;
             border-top-left-radius: 0;
             right: 1px;
         }

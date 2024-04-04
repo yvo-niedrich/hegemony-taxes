@@ -22,13 +22,13 @@ onClickOutside(target, () => emit('modal-close'));
         <div class="modal-wrapper">
             <div class="modal-container" ref="target">
                 <div class="modal-header">
-                    <slot name="header"> default header </slot>
+                    <slot name="header" />
                 </div>
                 <div class="modal-body">
-                    <slot name="content"> default content </slot>
+                    <slot name="content" />
                 </div>
                 <div v-if="hasSlot('footer')" class="modal-footer">
-                    <slot name="footer"> </slot>
+                    <slot name="footer" />
                 </div>
             </div>
         </div>
@@ -44,11 +44,11 @@ onClickOutside(target, () => emit('modal-close'));
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.75);
-    color: #ccc;
+    color: #fff;
 }
 
 .modal-container {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.75);
+    box-shadow: 2px 2px 3em rgba(0, 0, 0, 1);
     border: 1px solid #666;
     border-radius: 0.45em;
     overflow: hidden;
@@ -58,13 +58,14 @@ onClickOutside(target, () => emit('modal-close'));
     background-color: #35464d;
 
     .modal-header {
-        background-color: #292929;
+        background: #292929;
+        background: linear-gradient(0deg, #292929 0%, #35464d 100%);
         border-bottom: 1px solid #555;
         text-align: center;
 
         font-weight: bold;
         font-size: 1.5em;
-        padding: 0.1em 0;
+        padding: 0.2em 0;
     }
 
     .modal-footer {

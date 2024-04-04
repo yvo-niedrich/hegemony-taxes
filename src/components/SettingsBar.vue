@@ -22,6 +22,10 @@ function resetStores() {
     usePolicyStore().$reset();
     useClassStore().$reset();
 }
+
+const appVersion = `v${__APP_VERSION__}`;
+const licenseUrl = `${__APP_REPO__}/blob/main/LICENSE`;
+const issuesUrl = `${__APP_REPO__}/issues`;
 </script>
 
 <template>
@@ -51,7 +55,9 @@ function resetStores() {
         <div class="settings-license no-break">
             &copy; Yvo Niedrich
             <span class="text-separator"> | </span>
-            <a href="https://opensource.org/license/mit" target="_blank">MIT License</a>
+            <a :href="issuesUrl">{{ appVersion }}</a>
+            <span class="text-separator"> | </span>
+            <a :href="licenseUrl" target="_blank">MIT License</a>
         </div>
     </div>
 </template>
@@ -82,7 +88,11 @@ function resetStores() {
     padding: 0;
 
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 5fr 3fr;
+
+    @media screen and (max-width: 719px) {
+        grid-template-columns: 11fr 7fr;
+    }
 
     @media screen and (max-width: 529px) {
         grid-template-columns: 1fr;
@@ -90,7 +100,11 @@ function resetStores() {
 
     .app-settings {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 3fr 4fr;
+
+        @media screen and (max-width: 719px) {
+            grid-template-columns: 5fr 8fr;
+        }
     }
 
     .app-settings > div,
@@ -135,7 +149,7 @@ function resetStores() {
         font-size: 0.7em;
 
         a {
-            color: #888;
+            color: #666;
             text-decoration: underline;
 
             &:hover {
