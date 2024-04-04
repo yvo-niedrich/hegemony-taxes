@@ -1,10 +1,21 @@
 <script lang="ts" setup>
+import { ref } from 'vue';
 import { getSettingsStore } from '@/stores/settings';
 import { useClassStore } from '@/stores/classes';
 import { usePolicyStore } from '@/stores/policies';
+import ModalComponent from '@/components/ModalComponent.vue';
+
 const { store, language, showFormula } = getSettingsStore();
 
 const baseUrl = import.meta.env.BASE_URL;
+const isModalOpened = ref(false);
+
+const showQr = () => {
+    isModalOpened.value = true;
+};
+const hideQr = () => {
+    isModalOpened.value = false;
+};
 
 function resetStores() {
     store.$reset();
@@ -26,8 +37,15 @@ function resetStores() {
                 />
             </div>
             <div class="settings-config no-break">
-                <div class="settings-icon setting-formula" @click="() => (showFormula = !showFormula)" />
-                <div class="settings-icon setting-reset" @click="resetStores" />
+                <div class="settings-icon icon-formula" @click="() => (showFormula = !showFormula)" />
+                <div class="settings-icon icon-reset" @click="resetStores" />
+                <div class="settings-icon icon-share" @click="showQr" />
+                <ModalComponent :show="isModalOpened" @click="hideQr" @modal-close="hideQr" name="qr-modal">
+                    <template #header>Share App</template>
+                    <template #content>
+                        <div class="share-app"><img src="/icons/qr-code.svg" /></div>
+                    </template>
+                </ModalComponent>
             </div>
         </div>
         <div class="settings-license no-break">
@@ -39,6 +57,22 @@ function resetStores() {
 </template>
 
 <style lang="scss">
+.share-app {
+    box-shadow: 0 0 10px #000;
+
+    border: 6px solid #fff;
+    border-radius: 0.25em;
+    margin: 1.8em auto;
+
+    width: 14em;
+    height: 14em;
+
+    > img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
 .card.bottom {
     border-color: #111;
     border-radius: 0.325rem;
@@ -66,7 +100,7 @@ function resetStores() {
         text-align: center;
     }
 
-    img,
+    .language-icon,
     .settings-icon {
         cursor: pointer;
         height: 1.4em;
@@ -93,14 +127,6 @@ function resetStores() {
 
         background-color: #999;
         box-shadow: 0 0 1px #000;
-
-        &.setting-formula {
-            background-image: url('@/assets/icon-formula.svg');
-        }
-
-        &.setting-reset {
-            background-image: url('@/assets/icon-reset.svg');
-        }
     }
 
     .settings-license {

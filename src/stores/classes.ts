@@ -4,7 +4,7 @@ import { useStorage } from '@vueuse/core';
 export const useClassStore = defineStore('classes', () => {
     const population = useStorage('classes.population', 3);
     const mBusinesses = useStorage('classes.mBusinesses', 2);
-    const mEmployments = useStorage('classes.mEmployments', 3);
+    const mEmployments = useStorage('classes.mEmployments', 4);
     const cIncome = useStorage('classes.cIncome', 120);
     const cBusinesses = useStorage('classes.cBusinesses', 3);
 

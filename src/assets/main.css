@@ -3,6 +3,7 @@
     font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
+    font-variation-settings: 'wdth' 95;
     src:
         url('/fonts/lato-v24-latin_latin-ext-regular.woff2') format('woff2'),
         url('/fonts/lato-v24-latin_latin-ext-regular.ttf') format('truetype');
@@ -138,6 +139,18 @@ h3 {
 
 .icon-business-s {
     background-image: url('@/assets/icon-business-s.svg');
+}
+
+.icon-share {
+    background-image: url('@/assets/icon-share.svg');
+}
+
+.icon-formula {
+    background-image: url('@/assets/icon-formula.svg');
+}
+
+.icon-reset {
+    background-image: url('@/assets/icon-reset.svg');
 }
 
 .vardis {
