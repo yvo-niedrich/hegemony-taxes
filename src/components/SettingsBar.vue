@@ -14,19 +14,21 @@ function resetStores() {
 </script>
 
 <template>
-    <div class="app-settings card">
-        <div class="settings-language no-break">
-            <img
-                v-for="locale in $i18n.availableLocales"
-                :src="`${baseUrl}/icons/flag-${locale}.svg`"
-                :key="`locale-${locale}`"
-                :class="{ 'language-icon': true, active: $i18n.locale == locale }"
-                @click="() => ($i18n.locale = language = locale)"
-            />
-        </div>
-        <div class="settings-config no-break">
-            <div class="settings-icon setting-formula" @click="() => (showFormula = !showFormula)" />
-            <div class="settings-icon setting-reset" @click="resetStores" />
+    <div class="card bottom">
+        <div class="app-settings">
+            <div class="settings-language no-break">
+                <img
+                    v-for="locale in $i18n.availableLocales"
+                    :src="`${baseUrl}/icons/flag-${locale}.svg`"
+                    :key="`locale-${locale}`"
+                    :class="{ 'language-icon': true, active: $i18n.locale == locale }"
+                    @click="() => ($i18n.locale = language = locale)"
+                />
+            </div>
+            <div class="settings-config no-break">
+                <div class="settings-icon setting-formula" @click="() => (showFormula = !showFormula)" />
+                <div class="settings-icon setting-reset" @click="resetStores" />
+            </div>
         </div>
         <div class="settings-license no-break">
             &copy; Yvo Niedrich
@@ -37,18 +39,28 @@ function resetStores() {
 </template>
 
 <style lang="scss">
-.card.app-settings {
+.card.bottom {
     border-color: #111;
     border-radius: 0.325rem;
     background-color: #29373c;
     margin-top: 0.8em;
     margin-bottom: 0.5em;
-    padding: 0 1rem;
+    padding: 0;
 
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
 
-    > div {
+    @media screen and (max-width: 529px) {
+        grid-template-columns: 1fr;
+    }
+
+    .app-settings {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .app-settings > div,
+    .settings-license {
         padding-top: 0.5em;
         padding-bottom: 0.3em;
         text-align: center;
@@ -65,7 +77,9 @@ function resetStores() {
 
     .settings-config,
     .settings-license {
-        border-left: 1px solid #222;
+        border-color: #292929;
+        border-style: solid;
+        border-width: 0 0 0 1px;
     }
 
     .settings-icon {
@@ -101,6 +115,10 @@ function resetStores() {
             &:hover {
                 text-decoration: none;
             }
+        }
+
+        @media screen and (max-width: 529px) {
+            border-width: 1px 0 0 0;
         }
     }
 

@@ -18,12 +18,12 @@ export default defineConfig({
         ViteEjsPlugin(),
         VitePWA({
             registerType: 'autoUpdate',
-            includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'icons/*.svg'],
+            includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'icons/*.svg', 'fonts/*'],
             manifest: {
                 name: 'Hegemony Taxes',
                 short_name: 'Taxes',
                 description: 'Simplify tax payments in Hegemony',
-                theme_color: '#E99900',
+                theme_color: '#35464D',
                 icons: [
                     {
                         src: 'android-chrome-192x192.png',

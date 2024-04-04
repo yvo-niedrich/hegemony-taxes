@@ -51,7 +51,7 @@ function count() {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.1em;
+    padding: 0.2em 0.4em;
 }
 
 .range {
@@ -83,7 +83,6 @@ function count() {
 
 .sliderthumb-label {
     position: absolute;
-    border-radius: 0.5em;
     padding: 0.1em;
     min-width: 2em;
     text-align: center;

@@ -41,8 +41,8 @@ function toggleFormula() {
     @media screen and (max-width: 529px) {
         &.detailed {
             margin-top: 1em;
-            margin-left: 0.2em;
-            margin-right: 0.2em;
+            margin-left: 0em;
+            margin-right: 0em;
 
             font-size: 1.15rem;
             line-height: 1.8em;

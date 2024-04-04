@@ -46,13 +46,13 @@ const model = defineModel({
 
 <template>
     <div class="card split policy no-select" :class="{ ['policy-' + props.policy]: true }">
-        <div class="policy-column">
-            <div class="policy-number">
+        <div class="policy-column policy-number">
+            <div class="thin">
                 {{ policyNumber }}
             </div>
         </div>
 
-        <div class="policy-column">
+        <div class="policy-column policy-slider">
             <h3>{{ $t(policyName) }}</h3>
             <NumberSlider v-model.number="model" min="0" max="2" :format="(x: number) => ['A', 'B', 'C'][x]" />
         </div>
@@ -80,27 +80,43 @@ const model = defineModel({
     &.policy-education {
         background-color: #f39404;
     }
+
+    h3 {
+        margin-bottom: 0.5em;
+    }
+
     @media (min-width: 719px) and (max-width: 980px) {
-        grid-template-columns: 2.2em 1fr;
+        grid-template-columns: 2em 1fr;
         padding-left: 0.6em;
     }
-    .policy-number {
-        transition:
-            margin 0.2s ease-in-out,
-            line-height 0.2s ease-in-out;
 
-        padding: 0;
-        margin-right: 0.2em;
-        font-weight: bold;
-        font-size: 4em;
-        font-stretch: semi-condensed;
-        border-right: 1px solid #ffffff;
+    .policy-number {
+        display: table;
+        margin-right: 0.6em;
+        border-right: 1px solid #ddd;
 
         @media (min-width: 719px) and (max-width: 980px) {
-            margin-right: 0.15em;
-            font-size: 2.8em;
-            line-height: 1.6em;
-            font-stretch: extra-condensed;
+            margin-right: 0.2em;
+        }
+
+        & > div {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+
+            transition:
+                margin 0.2s ease-in-out,
+                line-height 0.2s ease-in-out;
+
+            padding-right: 0.1em;
+            font-size: 3.5em;
+            font-weight: 400;
+
+            @media (min-width: 719px) and (max-width: 980px) {
+                font-size: 2.5em;
+                line-height: 1.6em;
+                font-stretch: extra-condensed;
+            }
         }
     }
 }
