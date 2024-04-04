@@ -7,7 +7,7 @@ const hasSlot = (name: string) => {
     return !!slots[name];
 };
 
-const props = defineProps({
+defineProps({
     show: Boolean,
 });
 
