@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import NumberSlider from '@/components/NumberSlider.vue';
+import Tooltip from '@/components/Tooltip.vue';
 import { getPolicyStore } from '@/stores/policies';
 import { getClassStore } from '@/stores/classes';
 
@@ -16,7 +17,9 @@ const employmentTax = computed(() => taxMultiplier.value * mBusinesses.value);
         <h3>{{ $t('header.middleclass') }}</h3>
 
         <div class="split middleclass-operational">
-            <div class="parameter-icon icon-business-m" />
+            <Tooltip :text="$t('hint.middle.employmentTax')">
+                <div class="parameter-icon icon-business-m" />
+            </Tooltip>
             <div class="middleclass-parameter parameter-income">
                 <NumberSlider :min="0" :max="8" v-model.number="mBusinesses" />
             </div>
@@ -25,9 +28,11 @@ const employmentTax = computed(() => taxMultiplier.value * mBusinesses.value);
         <div class="middleclass-divider" />
 
         <div class="split middleclass-labor">
-            <div class="parameter-icon icon-business-c">
-                <div class="parameter-icon icon-business-s"></div>
-            </div>
+            <Tooltip :text="$t('hint.middle.incomeTax')">
+                <div class="parameter-icon icon-business-c">
+                    <div class="parameter-icon icon-business-s"></div>
+                </div>
+            </Tooltip>
             <div class="middleclass-parameter parameter-employment">
                 <NumberInput :min="0" :max="24" v-model="mEmployments" />
             </div>

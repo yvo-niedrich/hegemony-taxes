@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import NumberSlider from '@/components/NumberSlider.vue';
+import Tooltip from '@/components/Tooltip.vue';
 import { getPolicyStore } from '@/stores/policies';
 import { getClassStore } from '@/stores/classes';
 
@@ -14,7 +15,9 @@ const wIncomeTax = computed(() => incomeTax.value * population.value);
     <div class="working-class card">
         <h3>{{ $t('header.workingclass') }}</h3>
         <div class="split">
-            <div class="parameter-icon icon-workers" />
+            <Tooltip :text="$t('hint.worker.incomeTax')">
+                <div class="parameter-icon icon-workers" />
+            </Tooltip>
             <div>
                 <NumberSlider :min="3" :max="10" v-model.number="population" />
             </div>

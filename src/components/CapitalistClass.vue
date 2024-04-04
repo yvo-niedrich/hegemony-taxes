@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { getPolicyStore } from '@/stores/policies';
 import { getClassStore } from '@/stores/classes';
+import Tooltip from '@/components/Tooltip.vue';
 
 const { tax, taxMultiplier } = getPolicyStore();
 const { cBusinesses, cIncome } = getClassStore();
@@ -35,13 +36,17 @@ const corporateTax = computed(() => getCorporateTax(cIncome.value - employmentTa
 
         <div class="capitalist-parameters">
             <div class="split">
-                <div class="parameter-icon icon-income" />
+                <Tooltip :text="$t('hint.capitalist.corporateTax')">
+                    <div class="parameter-icon icon-income" />
+                </Tooltip>
                 <div class="capitalist-parameter parameter-income">
                     <NumberInput :min="0" :max="999" :intervalTimeout="40" v-model="cIncome" />
                 </div>
             </div>
             <div class="split">
-                <div class="parameter-icon icon-business-c" />
+                <Tooltip :text="$t('hint.capitalist.employmentTax')">
+                    <div class="parameter-icon icon-business-c" />
+                </Tooltip>
                 <div class="capitalist-parameter parameter-businesses">
                     <NumberInput :min="0" :max="12" v-model="cBusinesses" />
                 </div>
