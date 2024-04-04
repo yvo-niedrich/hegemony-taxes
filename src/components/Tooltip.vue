@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { defineProps, computed, ref } from 'vue';
-import { onClickOutside } from '@vueuse/core';
+import { onClickOutside, useActiveElement } from '@vueuse/core';
 
 const props = defineProps({
     text: {
@@ -39,6 +39,13 @@ function forceUnshow() {
     if (timer) {
         clearTimeout(timer);
         timer = null;
+
+        const activeElement = useActiveElement().value as HTMLElement | null;
+        const root = target.value as HTMLElement | null;
+
+        if (root && activeElement && root.contains(activeElement)) {
+            activeElement.blur();
+        }
     }
 }
 
