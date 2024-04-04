@@ -55,7 +55,7 @@ const issuesUrl = `${__APP_REPO__}/issues`;
         <div class="settings-license no-break">
             &copy; Yvo Niedrich
             <span class="text-separator"> | </span>
-            <a :href="issuesUrl">{{ appVersion }}</a>
+            <a :href="issuesUrl" target="_blank">{{ appVersion }}</a>
             <span class="text-separator"> | </span>
             <a :href="licenseUrl" target="_blank">MIT License</a>
         </div>
