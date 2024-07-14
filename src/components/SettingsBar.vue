@@ -5,7 +5,7 @@ import { useClassStore } from '@/stores/classes';
 import { usePolicyStore } from '@/stores/policies';
 import ModalComponent from '@/components/ModalComponent.vue';
 
-const { store, language, showFormula } = getSettingsStore();
+const { store, language, showFormula, showTaxMultiplier } = getSettingsStore();
 
 const baseUrl = import.meta.env.BASE_URL;
 const isModalOpened = ref(false);
@@ -41,6 +41,7 @@ const issuesUrl = `${__APP_REPO__}/issues`;
                 />
             </div>
             <div class="settings-config no-break">
+                <div class="settings-icon icon-tax-multiplier-black" @click="() => (showTaxMultiplier = !showTaxMultiplier)" />
                 <div class="settings-icon icon-formula" @click="() => (showFormula = !showFormula)" />
                 <div class="settings-icon icon-reset" @click="resetStores" />
                 <div class="settings-icon icon-share" @click="showQr" />
@@ -118,7 +119,7 @@ const issuesUrl = `${__APP_REPO__}/issues`;
     .settings-icon {
         cursor: pointer;
         height: 1.4em;
-        margin: 0 0.4em;
+        margin: 0 0.3em;
 
         border-radius: 0.325rem;
     }
@@ -141,6 +142,10 @@ const issuesUrl = `${__APP_REPO__}/issues`;
 
         background-color: #999;
         box-shadow: 0 0 1px #000;
+
+        .settings-icon .cls-1 {
+            fill: #000;
+        }
     }
 
     .settings-license {

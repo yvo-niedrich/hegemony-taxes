@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed, defineProps, defineModel, defineComponent } from 'vue';
 import NumberSlider from './NumberSlider.vue';
+import { getSettingsStore } from '@/stores/settings';
+const { showTaxMultiplier } = getSettingsStore();
 
 const props = defineProps<{ policy?: 'fiscal' | 'labor' | 'tax' | 'health' | 'education' }>();
 
@@ -45,7 +47,7 @@ const model = defineModel({
 </script>
 
 <template>
-    <div class="card split policy no-select" :class="{ ['policy-' + props.policy]: true }">
+    <div class="card split policy no-select" :class="{ ['policy-' + props.policy]: true, narrow: showTaxMultiplier }">
         <div class="policy-column policy-number">
             <div class="thin">
                 {{ policyNumber }}

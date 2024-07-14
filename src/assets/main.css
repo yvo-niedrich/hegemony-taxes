@@ -104,8 +104,12 @@ h3 {
 .card {
     border: 1px solid #000000;
     border-radius: 0.6rem;
-    padding: 1em 0.8em;
+    padding: 0.75em 0.8em;
     margin: 0.2em;
+}
+
+.card.narrow {
+    padding: 0.4em 0.8em;
 }
 
 .split {
@@ -147,6 +151,14 @@ h3 {
 
 .icon-formula {
     background-image: url('@/assets/icon-formula.svg');
+}
+
+.icon-tax-multiplier {
+    background-image: url('@/assets/icon-tax-multiplier.svg');
+}
+
+.icon-tax-multiplier-black {
+    background-image: url('@/assets/icon-tax-multiplier-black.svg');
 }
 
 .icon-reset {
