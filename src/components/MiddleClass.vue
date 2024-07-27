@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import NumberSlider from '@/components/NumberSlider.vue';
 import Tooltip from '@/components/Tooltip.vue';
 import { getPolicyStore } from '@/stores/policies';
 import { getClassStore } from '@/stores/classes';
+import { getSettingsStore } from '@/stores/settings';
 
-const { incomeTax, taxMultiplier } = getPolicyStore();
+const { showFormula } = getSettingsStore();
+const { incomeTax, imfRelevant, taxMultiplier } = getPolicyStore();
 const { mEmployments, mBusinesses } = getClassStore();
 
 const mIncomeTax = computed(() => incomeTax.value * mEmployments.value);
@@ -16,33 +17,39 @@ const employmentTax = computed(() => taxMultiplier.value * mBusinesses.value);
     <div class="middle-class card">
         <h3>{{ $t('header.middleclass') }}</h3>
 
-        <div class="split middleclass-operational">
-            <Tooltip :text="$t('hint.middle.employmentTax')">
-                <div class="parameter-icon icon-business-m" />
-            </Tooltip>
-            <div class="middleclass-parameter parameter-income">
-                <NumberSlider :min="0" :max="8" v-model.number="mBusinesses" />
-            </div>
-        </div>
 
-        <div class="middleclass-divider" />
-
-        <div class="split middleclass-labor">
-            <Tooltip :text="$t('hint.middle.incomeTax')">
-                <div class="parameter-icon icon-business-c">
-                    <div class="parameter-icon icon-business-s"></div>
+        <div class="middleclass-parameters">
+            <div class="split middleclass-operational">
+                <Tooltip :text="$t('hint.middle.employmentTax')">
+                    <div class="parameter-icon icon-business-m" />
+                </Tooltip>
+                <div class="middleclass-parameter parameter-businesses">
+                    <NumberInput :min="0" :max="8" v-model.number="mBusinesses" />
                 </div>
-            </Tooltip>
-            <div class="middleclass-parameter parameter-employment">
-                <NumberInput :min="0" :max="24" v-model="mEmployments" />
             </div>
+
+            <div class="split middleclass-labor">
+                <Tooltip :text="$t('hint.middle.incomeTax')">
+                    <div class="parameter-icon icon-business-c">
+                        <div class="parameter-icon icon-business-s"></div>
+                    </div>
+                </Tooltip>
+                <div class="middleclass-parameter parameter-employment">
+                    <NumberInput :min="0" :max="24" v-model.number="mEmployments" />
+                </div>
+            </div>
+
         </div>
 
         <TaxFormula class="no-select">
             <div class="detailed-content">
                 <div class="label-group no-break">
                     <div class="label-group-content">
-                        {{ incomeTax }}<vardis /> &times; {{ mEmployments }} &equals; {{ mIncomeTax }}<vardis />
+                        {{ mEmployments }}&times;
+                        <span :class="{ 'pr-1 indicator-warn': imfRelevant }">{{ incomeTax }}</span>
+                        <vardis />
+                        &equals; {{ mIncomeTax }}
+                        <vardis />
                     </div>
                     <div class="label-group-label">{{ $t('taxes.income') }}</div>
                 </div>
@@ -51,14 +58,21 @@ const employmentTax = computed(() => taxMultiplier.value * mBusinesses.value);
 
                 <div class="label-group no-break">
                     <div class="label-group-content">
-                        {{ taxMultiplier }}<vardis /> &times; {{ mBusinesses }} &equals; {{ employmentTax }}<vardis />
+                        {{ taxMultiplier }}
+                        <vardis /> &times; {{ mBusinesses }} &equals; {{ employmentTax }}
+                        <vardis />
                     </div>
                     <div class="label-group-label">{{ $t('taxes.employment') }}</div>
                 </div>
             </div>
             <span class="detailed-content formula-separator">&rArr;&nbsp;</span>
 
-            <span class="formula-result">{{ mIncomeTax + employmentTax }}<vardis /></span>
+            <span class="formula-result">
+                <span :class="{ 'indicator-warn': !showFormula && imfRelevant }">
+                    {{ mIncomeTax + employmentTax }}
+                    <vardis />
+                </span>
+            </span>
         </TaxFormula>
     </div>
 </template>
@@ -69,27 +83,37 @@ const employmentTax = computed(() => taxMultiplier.value * mBusinesses.value);
     color: #ffffff;
     text-shadow: #35474d 0 0 1px;
 
+    .middleclass-parameters {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        @media screen and (max-width: 529px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
     .icon-business-c {
-        background-size: 2em;
-        background-position: 10% 0%;
-        filter: drop-shadow(0px 0px 1px rgb(255 255 255 / 0.5));
+        background-size: 65%;
+        background-position: 10% 5%;
+        filter: drop-shadow(0px 0px 1px rgb(255 255 255 / 0.75));
     }
+
     .icon-business-s {
-        background-size: 2em;
-        background-position: 90% 100%;
+        background-size: 65%;
+        background-position: 90% 95%;
         filter: drop-shadow(0px 0px 1px rgb(255 255 255 / 0.5));
     }
+
     .icon-business-m {
         background-size: 2.75em;
         filter: drop-shadow(0px 0px 8px rgb(0 0 0 / 0.75));
     }
 
-    .middleclass-parameter.parameter-employment {
-        margin: 0.2em 8em 0.2em 4em;
+    .middleclass-parameter {
+        margin: 0.5em 10%;
 
         @media screen and (max-width: 529px) {
-            margin-left: 2em;
-            margin-right: 2em;
+            margin: 0.5em 2.3em;
         }
     }
 

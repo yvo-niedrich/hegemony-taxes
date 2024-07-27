@@ -56,7 +56,9 @@ const corporateTax = computed(() => getCorporateTax(cIncome.value - employmentTa
             <div class="detailed-content">
                 <div class="label-group no-break">
                     <div class="label-group-content">
-                        {{ taxMultiplier }}<vardis /> &times; {{ cBusinesses }} &equals; {{ employmentTax }}<vardis />
+                        {{ taxMultiplier }}
+                        <vardis /> &times; {{ cBusinesses }} &equals; {{ employmentTax }}
+                        <vardis />
                     </div>
                     <div class="label-group-label">{{ $t('taxes.employment') }}</div>
                 </div>
@@ -64,12 +66,16 @@ const corporateTax = computed(() => getCorporateTax(cIncome.value - employmentTa
                 <span class="formula-separator">&plus;</span>
 
                 <div class="label-group no-break">
-                    <div class="label-group-content" style="min-width: 3.5em">&nbsp;&nbsp;{{ corporateTax }}<vardis />&nbsp;&nbsp;</div>
+                    <div class="label-group-content" style="min-width: 3.5em">&nbsp;&nbsp;{{ corporateTax }}
+                        <vardis />&nbsp;&nbsp;
+                    </div>
                     <div class="label-group-label">{{ $t('taxes.corporate') }}</div>
                 </div>
             </div>
             <span class="detailed-content formula-separator">&rArr;&nbsp;</span>
-            <span class="formula-result"> {{ employmentTax + corporateTax }}<vardis /> </span>
+            <span class="formula-result"> {{ employmentTax + corporateTax }}
+                <vardis />
+            </span>
         </TaxFormula>
     </div>
 </template>
@@ -93,7 +99,7 @@ const corporateTax = computed(() => getCorporateTax(cIncome.value - employmentTa
         margin: 0.5em 10%;
 
         @media screen and (max-width: 529px) {
-            margin: 0.5em 2em;
+            margin: 0.5em 2.3em;
         }
     }
 

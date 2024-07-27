@@ -1,19 +1,18 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
 
-const { min, max, format } = defineProps<{
+const { min, max, format, indicatorClass } = defineProps<{
     min: number | string;
     max: number | string;
+    indicatorClass?: string;
     format?: (x: number) => string | number;
 }>();
 
-const model = defineModel({
-    default: 1,
-    type: Number,
-});
+const value = defineModel('value', { default: 0, type: Number });
+const indicator = defineModel('indicator', { default: undefined, type: Number });
 
 function setValue(num: number) {
-    model.value = num;
+    value.value = num;
 }
 
 function _(num: number) {
@@ -23,6 +22,7 @@ function _(num: number) {
 function count() {
     return Number(max) - Number(min);
 }
+
 </script>
 
 <template>
@@ -32,13 +32,14 @@ function count() {
                 <div class="sliderthumbs no-select">
                     <span v-for="i in count() + 1" v-bind:key="i" class="sliderthumb-container">
                         <span>&nbsp;</span>
-                        <div @click.prevent="() => setValue(_(i))" class="sliderthumb-label" :class="{ active: model == _(i) }">
+                        <div @click.prevent="() => setValue(_(i))" class="sliderthumb-label pointer"
+                            :class="{ active: value == _(i), [indicatorClass || 'indicator-warn']: indicator == _(i) }">
                             {{ format ? format(_(i)) : _(i) }}
                         </div>
                     </span>
                 </div>
                 <div class="slider">
-                    <input type="range" v-model="model" :min="min" :max="max" step="1" />
+                    <input type="range" v-model="value" :min="min" :max="max" step="1" />
                 </div>
             </div>
         </div>
@@ -86,7 +87,6 @@ function count() {
     padding: 0.1em;
     min-width: 2em;
     text-align: center;
-    cursor: pointer;
 
     font-weight: bold;
     font-size: 1.4em;
@@ -147,6 +147,7 @@ input[type='range'] {
     outline: none;
     width: 100%;
 }
+
 /* Styles Firefox */
 input[type='range']:focus,
 input[type='range']:focus::-moz-range-thumb {

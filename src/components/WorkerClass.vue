@@ -4,8 +4,10 @@ import NumberSlider from '@/components/NumberSlider.vue';
 import Tooltip from '@/components/Tooltip.vue';
 import { getPolicyStore } from '@/stores/policies';
 import { getClassStore } from '@/stores/classes';
+import { getSettingsStore } from '@/stores/settings';
 
-const { incomeTax } = getPolicyStore();
+const { showFormula } = getSettingsStore();
+const { incomeTax, imfRelevant } = getPolicyStore();
 const { population } = getClassStore();
 
 const wIncomeTax = computed(() => incomeTax.value * population.value);
@@ -19,15 +21,19 @@ const wIncomeTax = computed(() => incomeTax.value * population.value);
                 <div class="parameter-icon icon-workers" />
             </Tooltip>
             <div>
-                <NumberSlider :min="3" :max="10" v-model.number="population" />
+                <NumberSlider :min="3" :max="10" v-model:value="population" />
             </div>
         </div>
 
         <TaxFormula class="no-select">
             <div class="detailed-content">
                 <div class="label-group no-break">
-                    <div class="label-group-content">
-                        {{ incomeTax }}<vardis /> &times; {{ population }} &equals; {{ wIncomeTax }}<vardis />
+                    <div class=" label-group-content">
+                        {{ population }} &times;
+                        <span :class="{ 'pr-1 indicator-warn': imfRelevant }">{{ incomeTax }}</span>
+                        <vardis />
+                        &equals; {{ wIncomeTax }}
+                        <vardis />
                     </div>
                     <div class="label-group-label">{{ $t('taxes.income') }}</div>
                 </div>
@@ -35,7 +41,12 @@ const wIncomeTax = computed(() => incomeTax.value * population.value);
                 <span class="formula-separator">&rArr;&nbsp;</span>
             </div>
 
-            <span class="formula-result">{{ wIncomeTax }}<vardis /></span>
+            <span class="formula-result">
+                <span :class="{ 'indicator-warn': !showFormula && imfRelevant }">
+                    {{ wIncomeTax }}
+                    <vardis />
+                </span>
+            </span>
         </TaxFormula>
     </div>
 </template>

@@ -4,18 +4,18 @@ import { useStorage } from '@vueuse/core';
 export const useSettingsStore = defineStore('settings', () => {
     const language = useStorage('settings.language', 'en');
     const showFormula = useStorage('settings.showFormula', false);
-    const showTaxMultiplier = useStorage('settings.showMultiplier', false);
+    const setImfPolicies = useStorage('settings.officialImf', true);
 
     function $reset(full = false) {
         showFormula.value = false;
-        showTaxMultiplier.value = false;
+        if (full) setImfPolicies.value = true;
         if (full) language.value = 'en';
     }
 
     return {
         language,
         showFormula,
-        showTaxMultiplier,
+        setImfPolicies,
         $reset,
     };
 });

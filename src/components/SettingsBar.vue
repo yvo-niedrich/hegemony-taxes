@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { getSettingsStore } from '@/stores/settings';
 import { useClassStore } from '@/stores/classes';
 import { usePolicyStore } from '@/stores/policies';
 import ModalComponent from '@/components/ModalComponent.vue';
 
-const { store, language, showFormula, showTaxMultiplier } = getSettingsStore();
+const { store, language, showFormula, setImfPolicies } = getSettingsStore();
 
 const baseUrl = import.meta.env.BASE_URL;
 const isModalOpened = ref(false);
@@ -16,12 +16,24 @@ const showQr = () => {
 const hideQr = () => {
     isModalOpened.value = false;
 };
+const toggleImfAutomation = () => {
+    setImfPolicies.value = !setImfPolicies.value
+}
+const toggleFormula = () => {
+    showFormula.value = !showFormula.value
+}
 
 function resetStores() {
     store.$reset();
     usePolicyStore().$reset();
     useClassStore().$reset();
 }
+
+const imfIcon = computed(() => ({
+    'icon-position-center m-auto w-80 h-100 ': true,
+    'icon-automation': setImfPolicies.value,
+    'icon-imf-label': !setImfPolicies.value
+}));
 
 const appVersion = `v${__APP_VERSION__}`;
 const licenseUrl = `${__APP_REPO__}/blob/main/LICENSE`;
@@ -32,19 +44,17 @@ const issuesUrl = `${__APP_REPO__}/issues`;
     <div class="card bottom">
         <div class="app-settings">
             <div class="settings-language no-break">
-                <img
-                    v-for="locale in $i18n.availableLocales"
-                    :src="`${baseUrl}/icons/flag-${locale}.svg`"
-                    :key="`locale-${locale}`"
-                    :class="{ 'language-icon': true, active: $i18n.locale == locale }"
-                    @click="() => ($i18n.locale = language = locale)"
-                />
+                <img v-for="locale in $i18n.availableLocales" :src="`${baseUrl}/icons/flag-${locale}.svg`"
+                    :key="`locale-${locale}`" :class="{ 'language-icon': true, active: $i18n.locale == locale }"
+                    @click="() => ($i18n.locale = language = locale)" />
             </div>
             <div class="settings-config no-break">
-                <div class="settings-icon icon-tax-multiplier-black" @click="() => (showTaxMultiplier = !showTaxMultiplier)" />
-                <div class="settings-icon icon-formula" @click="() => (showFormula = !showFormula)" />
-                <div class="settings-icon icon-reset" @click="resetStores" />
-                <div class="settings-icon icon-share" @click="showQr" />
+                <div class="pointer settings-icon" @click="toggleImfAutomation">
+                    <div :class="imfIcon" />
+                </div>
+                <div class="pointer settings-icon icon-formula" @click="toggleFormula" />
+                <div class="pointer settings-icon icon-reset" @click="resetStores" />
+                <div class="pointer settings-icon icon-share" @click="showQr" />
                 <ModalComponent :show="isModalOpened" @click="hideQr" @modal-close="hideQr" name="qr-modal">
                     <template #header>Share App</template>
                     <template #content>
@@ -74,7 +84,7 @@ const issuesUrl = `${__APP_REPO__}/issues`;
     width: 14em;
     height: 14em;
 
-    > img {
+    >img {
         width: 100%;
         height: 100%;
     }
@@ -104,11 +114,11 @@ const issuesUrl = `${__APP_REPO__}/issues`;
         grid-template-columns: 3fr 4fr;
 
         @media screen and (max-width: 719px) {
-            grid-template-columns: 5fr 8fr;
+            grid-template-columns: 5fr 9fr;
         }
     }
 
-    .app-settings > div,
+    .app-settings>div,
     .settings-license {
         padding-top: 0.5em;
         padding-bottom: 0.3em;
@@ -117,7 +127,6 @@ const issuesUrl = `${__APP_REPO__}/issues`;
 
     .language-icon,
     .settings-icon {
-        cursor: pointer;
         height: 1.4em;
         margin: 0 0.3em;
 

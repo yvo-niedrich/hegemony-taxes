@@ -1,30 +1,13 @@
 <script setup lang="ts">
-import { computed, defineProps, defineModel, defineComponent } from 'vue';
+import { computed, defineProps, defineComponent, ref } from 'vue';
 import NumberSlider from './NumberSlider.vue';
-import { getSettingsStore } from '@/stores/settings';
-const { showTaxMultiplier } = getSettingsStore();
+import { getPolicyStore } from '@/stores/policies';
+const { fiscal, labor, tax, health, education, imfLabor, imfRelevant } = getPolicyStore();
 
 const props = defineProps<{ policy?: 'fiscal' | 'labor' | 'tax' | 'health' | 'education' }>();
 
-const policyName = computed(() => {
-    switch (props.policy) {
-        case 'fiscal':
-            return 'policy.fiscal';
-        case 'labor':
-            return 'policy.labor';
-        case 'tax':
-            return 'policy.tax';
-        case 'health':
-            return 'policy.health';
-        case 'education':
-            return 'policy.education';
-        default:
-            return 'policy.unknown';
-    }
-});
-
-const policyNumber = computed(() => {
-    switch (props.policy) {
+function policyIndex(name: string | undefined) {
+    switch (name) {
         case 'fiscal':
             return 1;
         case 'labor':
@@ -36,18 +19,29 @@ const policyNumber = computed(() => {
         case 'education':
             return 5;
         default:
-            return '?';
+            return 0;
     }
+}
+
+const policyNumber = computed(() => policyIndex(props.policy));
+
+const policyName = computed(() => {
+    return [
+        'policy.unknown',
+        'policy.fiscal',
+        'policy.labor',
+        'policy.tax',
+        'policy.health',
+        'policy.education',
+    ][policyNumber.value];
 });
 
-const model = defineModel({
-    default: 1,
-    type: Number,
-});
+const policyValue = [ref(-1), fiscal, labor, tax, health, education][policyNumber.value];
+const indicatorValue = props.policy === 'labor' ? imfLabor : ref(-1);
 </script>
 
 <template>
-    <div class="card split policy no-select" :class="{ ['policy-' + props.policy]: true, narrow: showTaxMultiplier }">
+    <div class="card narrow split policy no-select" :class="{ ['policy-' + props.policy]: true }">
         <div class="policy-column policy-number">
             <div class="thin">
                 {{ policyNumber }}
@@ -56,7 +50,8 @@ const model = defineModel({
 
         <div class="policy-column policy-slider">
             <h3>{{ $t(policyName) }}</h3>
-            <NumberSlider v-model.number="model" min="0" max="2" :format="(x: number) => ['A', 'B', 'C'][x]" />
+            <NumberSlider :class="{ 'soft': !imfRelevant }" v-model:value.number="policyValue"
+                v-model:indicator.number="indicatorValue" min="0" max="2" :format="(x: number) => ['A', 'B', 'C'][x]" />
         </div>
     </div>
 </template>
@@ -70,15 +65,19 @@ const model = defineModel({
     &.policy-fiscal {
         background-color: #048dc2;
     }
+
     &.policy-labor {
         background-color: #7a6fab;
     }
+
     &.policy-tax {
         background-color: #be53a1;
     }
+
     &.policy-health {
         background-color: #cb1312;
     }
+
     &.policy-education {
         background-color: #f39404;
     }
@@ -101,7 +100,7 @@ const model = defineModel({
             margin-right: 0.2em;
         }
 
-        & > div {
+        &>div {
             display: table-cell;
             vertical-align: middle;
             text-align: center;

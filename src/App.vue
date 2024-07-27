@@ -5,23 +5,18 @@ import MiddleClass from '@/components/MiddleClass.vue';
 import capitalist from '@/components/CapitalistClass.vue';
 import SettingsBar from '@/components/SettingsBar.vue';
 import TaxMultiplier from './components/TaxMultiplier.vue';
-import { getPolicyStore } from '@/stores/policies';
-import { getSettingsStore } from '@/stores/settings';
-
-const { fiscal, labor, tax, health, education } = getPolicyStore();
-const { showTaxMultiplier } = getSettingsStore();
 </script>
 
 <template>
     <div>
-        <div class="container">
+        <div class="container floating-multiplier">
             <div class="column policy-wrapper">
-                <TaxMultiplier v-if="showTaxMultiplier" />
-                <PolicySlider v-model="fiscal" policy="fiscal" />
-                <PolicySlider v-model="labor" policy="labor" />
-                <PolicySlider v-model="tax" policy="tax" />
-                <PolicySlider v-model="health" policy="health" />
-                <PolicySlider v-model="education" policy="education" />
+                <TaxMultiplier />
+                <PolicySlider policy="fiscal" />
+                <PolicySlider policy="labor" />
+                <PolicySlider policy="tax" />
+                <PolicySlider policy="health" />
+                <PolicySlider policy="education" />
             </div>
             <div class="column class-wrapper">
                 <WorkerClass />

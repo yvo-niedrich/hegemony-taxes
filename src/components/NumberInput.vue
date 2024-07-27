@@ -200,45 +200,18 @@ export default defineComponent({
 
 <template>
     <div class="number-input">
-        <button
-            class="number-input-button number-input-button-minus"
-            type="button"
-            tabindex="-1"
-            :disabled="disabled || readonly || !decreasable"
-            @mousedown.prevent="touchStarted(decrease)"
-            @touchstart.prevent="touchStarted(decrease)"
-            @mouseup.prevent="touchEnded"
-            @touchend.prevent="touchEnded"
-            @mouseout="touchEnded"
-        />
-        <input
-            ref="input"
-            class="number-input-input"
-            v-bind="attrs"
-            type="number"
-            :name="name"
-            :value="isNaN(value) ? '' : value"
-            :min="min"
-            :max="max"
-            :step="step"
-            :readonly="readonly"
-            :disabled="disabled || (!decreasable && !increasable)"
-            :placeholder="placeholder"
-            autocomplete="off"
-            @change="change"
-            @paste="paste"
-        />
-        <button
-            class="number-input-button number-input-button-plus"
-            type="button"
-            tabindex="-1"
-            :disabled="disabled || readonly || !increasable"
-            @mousedown.prevent="touchStarted(increase)"
-            @touchstart.prevent="touchStarted(increase)"
-            @mouseup.prevent="touchEnded"
-            @touchend.prevent="touchEnded"
-            @mouseout="touchEnded"
-        />
+        <button class="number-input-button pointer number-input-button-minus" type="button" tabindex="-1"
+            :disabled="disabled || readonly || !decreasable" @mousedown.prevent="touchStarted(decrease)"
+            @touchstart.prevent="touchStarted(decrease)" @mouseup.prevent="touchEnded" @touchend.prevent="touchEnded"
+            @mouseout="touchEnded" />
+        <input ref="input" class="number-input-input" v-bind="attrs" type="number" :name="name"
+            :value="isNaN(value) ? '' : value" :min="min" :max="max" :step="step" :readonly="readonly"
+            :disabled="disabled || (!decreasable && !increasable)" :placeholder="placeholder" autocomplete="off"
+            @change="change" @paste="paste" />
+        <button class="number-input-button pointer number-input-button-plus" type="button" tabindex="-1"
+            :disabled="disabled || readonly || !increasable" @mousedown.prevent="touchStarted(increase)"
+            @touchstart.prevent="touchStarted(increase)" @mouseup.prevent="touchEnded" @touchend.prevent="touchEnded"
+            @mouseout="touchEnded" />
     </div>
 </template>
 
@@ -253,7 +226,7 @@ export default defineComponent({
     border-radius: 0.4rem;
     border: 1px solid #333;
 
-    & > input {
+    &>input {
         -moz-appearance: textfield;
         text-align: center;
         border-radius: 0.4rem;
@@ -285,7 +258,7 @@ export default defineComponent({
         }
     }
 
-    & > .number-input-button {
+    &>.number-input-button {
         background-color: rgba(255, 255, 255, 0.6);
         border: 0;
         bottom: 1px;
@@ -294,13 +267,12 @@ export default defineComponent({
         width: 3.2rem;
         z-index: 1;
 
-        cursor: pointer;
-
         &:focus {
             outline: none;
         }
 
         &:hover {
+
             &::before,
             &::after {
                 background-color: #292929;
@@ -353,6 +325,22 @@ export default defineComponent({
             border-left: 1px solid #ccc;
             border-top-left-radius: 0;
             right: 1px;
+        }
+
+        @media (min-width: 719px) and (max-width: 980px) {
+            width: 2.6rem;
+
+            &::after {
+                height: 35%;
+            }
+        }
+
+        @media (max-width: 719px) {
+            width: 2.85rem;
+
+            &::after {
+                height: 36%;
+            }
         }
     }
 }
