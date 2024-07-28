@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="1001" height="999" version="1.1" id="svg336" sodipodi:docname="icon-imf-logo.svg"
+<svg width="1001" height="999" version="1.1" id="svg336" sodipodi:docname="icon-imf-logo-de.svg"
     inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
     xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg"
     xmlns:svg="http://www.w3.org/2000/svg">
     <sodipodi:namedview id="namedview1" pagecolor="#505050" bordercolor="#eeeeee" borderopacity="1"
         inkscape:showpageshadow="0" inkscape:pageopacity="0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#505050"
-        showgrid="false" inkscape:zoom="1.660533" inkscape:cx="442.32784" inkscape:cy="487.49406"
+        showgrid="false" inkscape:zoom="2.3483483" inkscape:cx="419.01791" inkscape:cy="465.2206"
         inkscape:window-width="2560" inkscape:window-height="1369" inkscape:window-x="1912" inkscape:window-y="-8"
-        inkscape:window-maximized="1" inkscape:current-layer="svg336" />
+        inkscape:window-maximized="1" inkscape:current-layer="g235" />
     <style id="style1">
         <![CDATA[
         .C,
@@ -379,13 +379,14 @@
     <use href="#AL" fill-opacity=".08" id="use231" />
     <use href="#AM" fill-opacity=".64" class="C" id="use232" />
     <use href="#AN" class="E y" id="use233" />
-    <g class="C" id="g235" transform="matrix(1.0555216,0,0,1.0555216,-27.765232,-27.755396)">
-        <use href="#AO" fill-opacity="0.96" id="use234" />
-        <use href="#AP" fill-opacity="0.95" id="use235" style="display:inline" />
+    <g class="C" id="g235" transform="matrix(1.1184268,0,0,1.0555216,-57.279939,-27.755396)"
+        style="paint-order:fill markers stroke">
+        <use href="#AP" fill-opacity="0.95" id="use235" style="display:inline;paint-order:fill markers stroke"
+            transform="rotate(180,450.04643,499.67202)" />
     </g>
     <use href="#AU" fill-opacity="0.96" class="C" id="use240"
-        transform="matrix(1.0555216,0,0,1.0555216,-27.765232,-27.755396)" />
-    <g class="E" id="g243" transform="matrix(1.0555216,0,0,1.0555216,-27.765232,-27.755396)">
+        transform="matrix(1.0555216,0,0,1.0555216,-7.765232,-27.755396)" />
+    <g class="E" id="g243" transform="matrix(1.0555216,0,0,1.0555216,-47.765232,-27.755396)">
         <use href="#AW" fill-opacity="0.67" id="use242" />
         <use href="#AX" class="z" id="use243" />
     </g>
@@ -412,7 +413,7 @@
     <use href="#Aw" fill-opacity="0.11" id="use268" transform="matrix(1.0555216,0,0,1.0555216,-27.765232,-27.755396)" />
     <use href="#Ax" class="C W" id="use269" />
     <use href="#Ay" fill-opacity="0.68" id="use270" transform="matrix(1.0555216,0,0,1.0555216,-27.765232,-27.755396)" />
-    <use href="#BC" class="C a" id="use274" />
+    <use href="#BC" class="C a" id="use274" transform="translate(20)" />
     <use href="#BD" class="E P" id="use275" />
     <g class="C" id="g278">
         <use href="#BE" fill-opacity=".88" id="use276" />
@@ -738,4 +739,7 @@
             d="M249 930c1.64.25 6.99-2.99 7-3 .1-.52.8-2.04 1-3-.23.25-1.8-.24-2 0-1.57 1.95-2.75 5.81-6 6Z" />
         <path id="CM" d="M249 930c2.91.6 5.05-2.41 7 0-.07-.86-.17-2.16 0-3-.01.01-5.36 3.25-7 3Z" />
     </defs>
+    <g class="C" id="g2" transform="matrix(1.0555216,0,0,1.0555216,-47.765232,-27.755396)">
+        <use href="#AO" fill-opacity="0.96" id="use1" />
+    </g>
 </svg>

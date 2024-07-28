@@ -5,10 +5,19 @@ import MiddleClass from '@/components/MiddleClass.vue';
 import capitalist from '@/components/CapitalistClass.vue';
 import SettingsBar from '@/components/SettingsBar.vue';
 import TaxMultiplier from './components/TaxMultiplier.vue';
+import { getSettingsStore } from '@/stores/settings';
+import { computed } from 'vue';
+
+
+const { language } = getSettingsStore();
+const classes = computed(() => ({
+    'lang-de': language.value == 'de',
+    'lang-en': language.value != 'de'
+}))
 </script>
 
 <template>
-    <div>
+    <div :class="classes">
         <div class="container floating-multiplier">
             <div class="column policy-wrapper">
                 <TaxMultiplier />

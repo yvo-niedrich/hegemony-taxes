@@ -20,7 +20,7 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
      inkscape:zoom="2.1281785"
-     inkscape:cx="316.46781"
+     inkscape:cx="316.46782"
      inkscape:cy="143.0801"
      inkscape:window-width="2560"
      inkscape:window-height="1369"
@@ -333,24 +333,6 @@
        id="use235" />
   </g>
   <use
-     href="#AQ"
-     fill-opacity="0.5"
-     id="use236"
-     transform="translate(-159.95455,-333.34007)" />
-  <g
-     class="C"
-     id="g238"
-     transform="translate(-159.95455,-333.34007)">
-    <use
-       href="#AR"
-       class="P"
-       id="use237" />
-    <use
-       href="#AS"
-       fill-opacity="0.39"
-       id="use238" />
-  </g>
-  <use
      href="#AU"
      fill-opacity="0.96"
      class="C"
@@ -360,24 +342,6 @@
      href="#AV"
      class="O P"
      id="use241"
-     transform="translate(-159.95455,-333.34007)" />
-  <g
-     class="E"
-     id="g243"
-     transform="translate(-159.95455,-333.34007)">
-    <use
-       href="#AW"
-       fill-opacity="0.67"
-       id="use242" />
-    <use
-       href="#AX"
-       class="z"
-       id="use243" />
-  </g>
-  <use
-     href="#Ac"
-     class="E AA"
-     id="use248"
      transform="translate(-159.95455,-333.34007)" />
   <g
      class="C"
@@ -392,19 +356,6 @@
        fill-opacity="0.28"
        id="use252" />
   </g>
-  <g
-     class="E"
-     id="g254"
-     transform="translate(-159.95455,-333.34007)">
-    <use
-       href="#Ah"
-       class="r"
-       id="use253" />
-    <use
-       href="#Ai"
-       class="x"
-       id="use254" />
-  </g>
   <use
      href="#Al"
      fill-opacity="0.47"
@@ -415,11 +366,6 @@
      href="#An"
      class="E a"
      id="use259"
-     transform="translate(-159.95455,-333.34007)" />
-  <use
-     href="#Ar"
-     class="O y"
-     id="use263"
      transform="translate(-159.95455,-333.34007)" />
   <use
      href="#As"
@@ -440,12 +386,6 @@
        id="use266" />
   </g>
   <use
-     href="#Av"
-     fill-opacity="0.54"
-     class="C"
-     id="use267"
-     transform="translate(-159.95455,-333.34007)" />
-  <use
      href="#Aw"
      fill-opacity="0.11"
      id="use268"
@@ -454,21 +394,6 @@
      href="#Ay"
      fill-opacity="0.68"
      id="use270"
-     transform="translate(-159.95455,-333.34007)" />
-  <use
-     href="#Az"
-     class="x"
-     id="use271"
-     transform="translate(-159.95455,-333.34007)" />
-  <use
-     href="#BA"
-     class="L"
-     id="use272"
-     transform="translate(-159.95455,-333.34007)" />
-  <use
-     href="#BB"
-     class="E b"
-     id="use273"
      transform="translate(-159.95455,-333.34007)" />
   <defs
      id="defs336">
