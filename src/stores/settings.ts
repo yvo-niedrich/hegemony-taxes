@@ -1,8 +1,22 @@
 import { defineStore, storeToRefs } from 'pinia';
 import { useStorage } from '@vueuse/core';
 
+const defaultLanguage = (function () {
+    const supportedLocales = ['de', 'en'];
+    const browserLocales = navigator.languages || [navigator.language];
+
+    for (const locale of browserLocales) {
+        const base = locale.split('-')[0];
+        if (supportedLocales.includes(base.toLocaleLowerCase())) {
+            return base;
+        }
+    }
+
+    return 'en';
+})();
+
 export const useSettingsStore = defineStore('settings', () => {
-    const language = useStorage('settings.language', 'en');
+    const language = useStorage('settings.language', defaultLanguage);
     const showFormula = useStorage('settings.showFormula', false);
     const setImfPolicies = useStorage('settings.officialImf', true);
 
