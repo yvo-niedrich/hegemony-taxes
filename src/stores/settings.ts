@@ -1,8 +1,8 @@
 import { defineStore, storeToRefs } from 'pinia';
 import { useStorage } from '@vueuse/core';
+import { supportedLocales } from '@/translation';
 
 const defaultLanguage = (function () {
-    const supportedLocales = ['de', 'en'];
     const browserLocales = navigator.languages || [navigator.language];
 
     for (const locale of browserLocales) {
