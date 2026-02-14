@@ -8,6 +8,7 @@ import { useSettingsStore } from '@/stores/settings';
 
 import en from '@/translation/en';
 import de from '@/translation/de';
+import es from '@/translation/es';
 
 import NumberInput from '@/components/NumberInput.vue';
 import TaxFormula from '@/components/TaxFormula.vue';
@@ -23,7 +24,7 @@ app.use(
     createI18n({
         locale: language ?? 'en', // set locale
         fallbackLocale: 'en', // set fallback locale
-        messages: { en, de },
+        messages: { en, de, es },
     }),
 );
 
