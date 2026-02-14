@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, defineProps, defineComponent, ref } from 'vue';
+import { computed, defineComponent, ref } from 'vue';
 import NumberSlider from './NumberSlider.vue';
 import { getPolicyStore } from '@/stores/policies';
 const { fiscal, labor, tax, health, education, imfLabor, imfRelevant } = getPolicyStore();

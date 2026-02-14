@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { defineProps, computed, ref } from 'vue';
+import { computed, ref } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 
 const props = defineProps({

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
 
 const { min, max, format, indicatorClass } = defineProps<{
     min: number | string;

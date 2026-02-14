@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { defineProps, defineEmits, useSlots, ref } from 'vue';
+import { useSlots, ref } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 
 const slots = useSlots();

@@ -10,11 +10,8 @@ import { computed } from 'vue';
 
 
 const { language } = getSettingsStore();
-const classes = computed(() => ({
-    'lang-de': language.value == 'de',
-    'lang-es': language.value == 'es',
-    'lang-en': language.value != 'de'
-}))
+const classes = computed(() => ({['lang-' + (language.value ?? 'en')]: true}))
+
 </script>
 
 <template>
