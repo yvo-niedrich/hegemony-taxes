@@ -26,6 +26,13 @@ const tooltipClasses = computed(() => ({
     visible: forceVisibility.value,
 }));
 
+const formattedText = computed(() => {
+    let html = props.text;
+    html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+    return html;
+});
+
 function forceShow() {
     if (forceVisibility.value) {
         return forceUnshow();
@@ -49,7 +56,7 @@ onClickOutside(target, forceUnshow);
 <template>
     <div ref="target" class="tooltip-wrapper" @click="forceShow">
         <slot />
-        <span :class="tooltipClasses" role="tooltip" :id="tooltipId" inert>{{ text }}</span>
+        <span :class="tooltipClasses" role="tooltip" :id="tooltipId" inert v-html="formattedText"></span>
     </div>
 </template>
 
@@ -77,6 +84,14 @@ onClickOutside(target, forceUnshow);
 
     position: absolute;
     z-index: 10;
+
+    em {
+        font-style: italic;
+    }
+
+    strong {
+        font-weight: bold;
+    }
 }
 
 .tooltip-wrapper .tooltip__text.visible,

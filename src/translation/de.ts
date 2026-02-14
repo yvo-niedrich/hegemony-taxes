@@ -23,12 +23,12 @@ export default {
             incomeTax: 'Bevölkerung (der untere Wert der Bevölkerungsleiste)',
         },
         middle: {
-            incomeTax: 'Anzahl "fremder" Unternehmen in denen NUR deine Arbeitskräfte tätig sind',
-            employmentTax: 'Anzahl deiner betriebsfähigen Unternehmen',
+            incomeTax: 'Anzahl **fremder** Unternehmen in denen deine Arbeitskräfte tätig sind',
+            employmentTax: 'Anzahl deiner **betriebsfähigen** Unternehmen',
         },
         capitalist: {
             corporateTax: 'Bruttoeinkommen - Geld im Einkommensbereich vor Steuern',
-            employmentTax: 'Anzahl deiner betriebsfähigen Unternehmen',
+            employmentTax: 'Anzahl deiner **betriebsfähigen** Unternehmen',
         },
     },
 };

@@ -24,11 +24,11 @@ export default {
         },
         middle: {
             incomeTax: 'The number of Companies, other than your own, where you have Workers',
-            employmentTax: 'Operational Companies you own',
+            employmentTax: '**Operational** Companies you own',
         },
         capitalist: {
             corporateTax: 'Gross income - Money in the Revenue area before taxes',
-            employmentTax: 'Operational Companies you own',
+            employmentTax: '**Operational** Companies you own',
         },
     },
 };

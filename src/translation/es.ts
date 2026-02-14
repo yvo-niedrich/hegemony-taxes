@@ -24,11 +24,11 @@ export default {
         },
         middle: {
             incomeTax: 'El número de empresas, además de la tuya, donde tienes trabajadores',
-            employmentTax: 'Empresas operativas que posees',
+            employmentTax: 'Empresas **operativas** que posees',
         },
         capitalist: {
             corporateTax: 'Ingresos brutos - Dinero en el área de ingresos antes de impuestos',
-            employmentTax: 'Empresas operativas que posees',
+            employmentTax: 'Empresas **operativas** que posees',
         },
     },
 };
