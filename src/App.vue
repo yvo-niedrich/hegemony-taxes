@@ -2,7 +2,7 @@
 import PolicySlider from '@/components/PolicySlider.vue';
 import WorkerClass from '@/components/WorkerClass.vue';
 import MiddleClass from '@/components/MiddleClass.vue';
-import capitalist from '@/components/CapitalistClass.vue';
+import CapitalistClass from '@/components/CapitalistClass.vue';
 import SettingsBar from '@/components/SettingsBar.vue';
 import TaxMultiplier from './components/TaxMultiplier.vue';
 import { getSettingsStore } from '@/stores/settings';
@@ -12,6 +12,7 @@ import { computed } from 'vue';
 const { language } = getSettingsStore();
 const classes = computed(() => ({
     'lang-de': language.value == 'de',
+    'lang-es': language.value == 'es',
     'lang-en': language.value != 'de'
 }))
 </script>
@@ -30,7 +31,7 @@ const classes = computed(() => ({
             <div class="column class-wrapper">
                 <WorkerClass />
                 <MiddleClass />
-                <capitalist />
+                <CapitalistClass />
             </div>
         </div>
         <SettingsBar />
